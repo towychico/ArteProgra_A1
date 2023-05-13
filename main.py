@@ -10,16 +10,15 @@ Exercises
 """
 
 from turtle import *
-
 from freegames import vector
 
 
 def line(start, end):
     """Draw line from start to end."""
-    up() #the  turtle pen is  lifted so it doesn't draw
-    goto(start.x, start.y) #we move the pen or the turtle object to the start position 
-    down() #the pen is  put down so it starts drawing
-    goto(end.x, end.y) #move cursor to end position
+    up()
+    goto(start.x, start.y)
+    down()
+    goto(end.x, end.y)
 
 
 def square(start, end):
@@ -36,20 +35,33 @@ def square(start, end):
     end_fill()
 
 
-def circle(start, end):
+def circle1(start, end):
+    """
+    The circle1 function draws a circle from start to end.
+    It takes the radius of the circle and moves to the starting point, then it draws a filled circle with that radius.
+
+    :param start: Set the starting point of the circle
+    :param end: Determine the radius of the circle
+    :return: None
+    :doc-author: Alvaro
+    """
     """Draw circle from start to end."""
-    pass  # TODO
+    radius = abs(end.x-start.x)
+    up()
+    goto(start.x, start.y-radius)
+    down()
+    begin_fill()
+    circle(radius)
+    end_fill()
 
 
 def rectangle(start, end):
-    """Draw rectangle from start to end."""
+    "Draw rectangle from start to end."
     pass  # TODO
-
 
 def triangle(start, end):
-    """Draw triangle from start to end."""
+    "Draw triangle from start to end."
     pass  # TODO
-
 
 def tap(x, y):
     """Store starting point or draw shape."""
@@ -79,9 +91,10 @@ onkey(lambda: color('white'), 'W')
 onkey(lambda: color('green'), 'G')
 onkey(lambda: color('blue'), 'B')
 onkey(lambda: color('red'), 'R')
+onkey(lambda: color('purple'), 'P') # Purple Color was added
 onkey(lambda: store('shape', line), 'l')
 onkey(lambda: store('shape', square), 's')
-onkey(lambda: store('shape', circle), 'c')
+onkey(lambda: store('shape', circle1), 'c')
 onkey(lambda: store('shape', rectangle), 'r')
 onkey(lambda: store('shape', triangle), 't')
 done()
